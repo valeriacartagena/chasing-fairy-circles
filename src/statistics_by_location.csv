@@ -1,0 +1,10 @@
+location,policy,total_reward,n_discoveries,discovery_rate
+australia,greedy,33345.0,3.85,0.86
+australia,random,4860.0,1.0,0.32
+australia,ucb,34380.0,3.95,0.9
+mali,greedy,45890.0,5.1,0.98
+mali,random,21340.0,2.65,0.77
+mali,ucb,43900.0,4.9,0.94
+namibia,greedy,17355.0,2.25,0.7
+namibia,random,2840.0,0.8,0.25
+namibia,ucb,18855.0,2.4,0.7

@@ -1,0 +1,6 @@
+,total_reward,total_reward,total_reward,total_reward,n_discoveries,n_discoveries,n_surveys,n_surveys,n_drills,n_drills,discovery_rate,discovery_rate
+,mean,std,min,max,mean,std,mean,std,mean,std,mean,std
+policy,,,,,,,,,,,,
+greedy,32196.667,14148.438,4600.0,54800.0,3.733,1.413,8.3,0.497,4.333,1.052,0.845,0.202
+random,9680.0,13252.794,-5400.0,45000.0,1.483,1.321,8.433,1.064,3.083,1.51,0.445,0.352
+ucb,32378.333,12736.802,5000.0,54900.0,3.75,1.271,8.25,0.474,4.367,0.956,0.85,0.188
