@@ -16,10 +16,10 @@ sys.path.insert(0, parent_dir)
 sys.path.insert(0, src_dir)
 
 try:
-    from simulate import run_simulation, step_simulation
+    from backend.simulate import run_simulation, step_simulation
 except ImportError:
-    # Fallback if being run differently
-    from src.simulate import run_simulation, step_simulation
+    # Fallback if being run locally from inside the backend/ folder
+    from simulate import run_simulation, step_simulation
 
 app = FastAPI(title="POMDP Geologic Hydrogen Exploration API")
 
