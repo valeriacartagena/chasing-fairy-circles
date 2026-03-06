@@ -7,10 +7,19 @@ import numpy as np
 import sys
 import os
 
-# Add src to path to import environment and pomdp_agent
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+# Add both parent dir and src dir to path so both 'src' and 'backend' are importable
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+src_dir = os.path.join(parent_dir, 'src')
 
-from simulate import run_simulation, step_simulation
+sys.path.insert(0, parent_dir)
+sys.path.insert(0, src_dir)
+
+try:
+    from simulate import run_simulation, step_simulation
+except ImportError:
+    # Fallback if being run differently
+    from src.simulate import run_simulation, step_simulation
 
 app = FastAPI(title="POMDP Geologic Hydrogen Exploration API")
 
