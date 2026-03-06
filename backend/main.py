@@ -14,6 +14,10 @@ from simulate import run_simulation, step_simulation
 
 app = FastAPI(title="POMDP Geologic Hydrogen Exploration API")
 
+# Store startup error to serve via /api/features if it crashed
+startup_error = None
+
+
 # Allow CORS for local Vite development
 app.add_middleware(
     CORSMiddleware,
@@ -53,7 +57,9 @@ try:
     df['cell_idx'] = df.groupby('location').cumcount()
 
 except Exception as e:
-    print(f"Error loading data: {e}")
+    import traceback
+    startup_error = traceback.format_exc()
+    print(f"Error loading data: {startup_error}")
     df = None
 
 
@@ -78,7 +84,7 @@ class StepRequest(BaseModel):
 @app.get("/features")
 def get_features(region: str | None = None):
     if df is None:
-        raise HTTPException(status_code=500, detail="Data not loaded")
+        raise HTTPException(status_code=500, detail=f"Data not loaded. Error: {startup_error}")
     
     filtered_df = df
     if region and region.lower() != "all three":
